@@ -17,22 +17,22 @@ function bot() {
         }
     }
 
-    function podbor2() {
+    function logic() {
         let userNum = userNumber();
         if (userNum > finalNumber) {
             console.log('Загаданное число меньше');
             console.log(finalNumber);
-            return podbor2();
+            return logic();
         } else if (userNum < finalNumber) {
             console.log('Загаданное число больше');
             console.log(finalNumber);
-            return podbor2();
+            return logic();
         } else if (userNum == finalNumber) { // почему с 3 равно не показывает алерт и консоль лог?
             alert('Поздравляю, Вы угадали!!!');
             console.log('Поздравляю, Вы угадали!!!');
         }
     }
-    podbor2();
+    logic();
 }
 
 bot();

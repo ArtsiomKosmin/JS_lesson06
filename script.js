@@ -2,34 +2,61 @@
 
 function bot() {
     let finalNumber = parseInt(Math.random() * 100);
+    let numberOfTrys = 10;
     console.log(finalNumber);
 
+    function checkNumberOfTrys() {
+        numberOfTrys--;
+        if (numberOfTrys > 0) {
+            return numberOfTrys;
+        } else {
+            let check = confirm('Попытки закончились, хотите сыграть ещё?');
+            if (check) {
+                numberOfTrys = 10;
+                bot();
+            } else {
+                alert('Спасибо за игру! Игра закончена');
+                throw 'stop';
+            }
+        }
+    }
 
     function userNumber() {
         let userNum = prompt('Угадай число от 1 до 100: ');
         if (!isNaN(parseFloat(userNum)) && isFinite(userNum)) {
             return userNum;   
         } else if (userNum === null){
-            alert('Игра закончена');
+            alert('Спасибо за игру! Игра закончена');
         } else {
             alert('Введите число!');
             return userNumber();
         }
     }
 
+    function confiration() {
+        let check = confirm('Поздравляю, Вы угадали!!! Хотите сыграть ещё раз?');
+        if (check) {
+            numberOfTrys = 10;
+            bot();
+        } else {
+            throw 'stop';
+        }
+    }
+    
     function logic() {
         let userNum = userNumber();
         if (userNum > finalNumber) {
-            console.log('Загаданное число меньше');
+            let numberOfTrys = checkNumberOfTrys();
+            console.log('Загаданное число меньше, осталось попыток', numberOfTrys);
             console.log(finalNumber);
             return logic();
         } else if (userNum < finalNumber) {
-            console.log('Загаданное число больше');
+            let numberOfTrys = checkNumberOfTrys();
+            console.log('Загаданное число больше, осталось попыток', numberOfTrys);
             console.log(finalNumber);
             return logic();
         } else if (userNum == finalNumber) { // почему с 3 равно не показывает алерт и консоль лог?
-            alert('Поздравляю, Вы угадали!!!');
-            console.log('Поздравляю, Вы угадали!!!');
+            confiration();
         }
     }
     logic();

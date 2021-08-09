@@ -8,7 +8,6 @@ function bot() {
     function checkNumberOfTrys() {
         numberOfTrys--;
         if (numberOfTrys > 0) {
-            console.log('checknumber', numberOfTrys);
             return numberOfTrys;
         } else {
             let check = confirm('Попытки закончились, хотите сыграть ещё?');
@@ -30,7 +29,7 @@ function bot() {
             alert('Спасибо за игру! Игра закончена');
         } else {
             alert('Введите число!');
-            userNumber();
+            logic();
         }
     }
 

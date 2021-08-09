@@ -8,6 +8,7 @@ function bot() {
     function checkNumberOfTrys() {
         numberOfTrys--;
         if (numberOfTrys > 0) {
+            console.log('checknumber', numberOfTrys);
             return numberOfTrys;
         } else {
             let check = confirm('Попытки закончились, хотите сыграть ещё?');
@@ -29,7 +30,7 @@ function bot() {
             alert('Спасибо за игру! Игра закончена');
         } else {
             alert('Введите число!');
-            return userNumber();
+            userNumber();
         }
     }
 
@@ -47,15 +48,15 @@ function bot() {
         let userNum = userNumber();
         if (userNum > finalNumber) {
             let numberOfTrys = checkNumberOfTrys();
-            console.log('Загаданное число меньше, осталось попыток', numberOfTrys);
+            alert('Загаданное число меньше, осталось попыток ' + (numberOfTrys));
             console.log(finalNumber);
-            return logic();
+            logic();
         } else if (userNum < finalNumber) {
             let numberOfTrys = checkNumberOfTrys();
-            console.log('Загаданное число больше, осталось попыток', numberOfTrys);
+            alert('Загаданное число больше, осталось попыток ' + (numberOfTrys));
             console.log(finalNumber);
-            return logic();
-        } else if (userNum == finalNumber) { // почему с 3 равно не показывает алерт и консоль лог?
+            logic();
+        } else if (userNum == finalNumber) { 
             confiration();
         }
     }
